@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="main_text">NMedia!</string>
+    <string name="title_more_view_text">title more view text</string>
+    <string name="post_watched_view_text">post_watched_view_text</string>
+    <string name="post_share_view">post_share_view</string>
+    <string name="post_likes_view">post_likes_view</string>
 </resources>

@@ -6,13 +6,138 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/post_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/margin"
+        android:contentDescription="Нетология. Университет будущего"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/post_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:maxLength="30"
+        app:layout_constraintBottom_toTopOf="@id/post_at"
+        app:layout_constraintStart_toEndOf="@id/post_avatar"
+        app:layout_constraintTop_toTopOf="@id/post_avatar"
+        tools:text="Netology. University of internet professions" />
+
+    <ImageView
+        android:id="@+id/post_title_more_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        android:contentDescription="@string/title_more_view_text"
+        app:layout_constraintStart_toEndOf="@id/post_title"
+        app:layout_constraintTop_toTopOf="@id/post_title"
+        app:layout_constraintBottom_toBottomOf="@id/post_title"
+        />
+
+    <TextView
+        android:id="@+id/post_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="@id/post_avatar"
+        app:layout_constraintStart_toEndOf="@id/post_avatar"
+        app:layout_constraintTop_toBottomOf="@id/post_title"
+        tools:text="11 june at 12:00" />
+
+    <LinearLayout
+        android:id="@+id/line_break_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/post_avatar"
+
+        />
+
+    <TextView
+        android:id="@+id/post_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/line_break_top"
+        tools:text="Lorem ipsum..."
+
+        />
+
+    <LinearLayout
+        android:id="@+id/line_break_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/post_article"
+
+        />
+
+    <ImageView
+        android:id="@+id/post_likes_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:src="@drawable/ic_baseline_favorite_border_24"
+        android:contentDescription="@string/post_likes_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_break_bottom" />
+
+    <TextView
+        android:id="@+id/post_likes_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@id/post_likes_view"
+        app:layout_constraintTop_toBottomOf="@id/line_break_bottom" />
+
+    <ImageView
+        android:id="@+id/post_share_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:src="@drawable/ic_baseline_share_24"
+        android:contentDescription="@string/post_share_view"
+        app:layout_constraintStart_toEndOf="@id/post_likes_counter"
+        app:layout_constraintTop_toBottomOf="@id/line_break_bottom"
+
+        />
+
+    <TextView
+        android:id="@+id/post_share_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintStart_toEndOf="@id/post_share_view"
+        app:layout_constraintTop_toBottomOf="@id/line_break_bottom"
+        tools:text="5" />
+
+    <TextView
+        android:id="@+id/post_watched_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_break_bottom"
+        tools:text="5" />
+
+    <ImageView
+        android:id="@+id/post_watched_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:contentDescription="@string/post_watched_view_text"
+        app:layout_constraintEnd_toStartOf="@id/post_watched_counter"
+        app:layout_constraintTop_toBottomOf="@id/line_break_bottom"
+        tools:src="@drawable/ic_baseline_visibility_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
