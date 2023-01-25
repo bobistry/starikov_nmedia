@@ -7,11 +7,12 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/post_avatar"
+        android:id="@+id/post_avatar_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:contentDescription="Нетология. Университет будущего"
+        android:contentDescription="@string/post_avatar_view"
+        android:src=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -23,40 +24,39 @@
         android:layout_margin="@dimen/margin"
         android:maxLength="30"
         app:layout_constraintBottom_toTopOf="@id/post_at"
-        app:layout_constraintStart_toEndOf="@id/post_avatar"
-        app:layout_constraintTop_toTopOf="@id/post_avatar"
-        tools:text="Netology. University of internet professions" />
+        app:layout_constraintStart_toEndOf="@id/post_avatar_view"
+        app:layout_constraintTop_toTopOf="@id/post_avatar_view"
+        tools:text="@tools:sample/full_names" />
 
     <ImageView
         android:id="@+id/post_title_more_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_more_vert_24"
         android:contentDescription="@string/title_more_view_text"
-        app:layout_constraintStart_toEndOf="@id/post_title"
-        app:layout_constraintTop_toTopOf="@id/post_title"
+        android:src="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintBottom_toBottomOf="@id/post_title"
-        />
+        app:layout_constraintStart_toEndOf="@id/post_title"
+        app:layout_constraintTop_toTopOf="@id/post_title" />
 
     <TextView
         android:id="@+id/post_at"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintBottom_toBottomOf="@id/post_avatar"
-        app:layout_constraintStart_toEndOf="@id/post_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/post_avatar_view"
+        app:layout_constraintStart_toEndOf="@id/post_avatar_view"
         app:layout_constraintTop_toBottomOf="@id/post_title"
-        tools:text="11 june at 12:00" />
+        tools:text="@tools:sample/date/ddmmyy" />
 
     <LinearLayout
         android:id="@+id/line_break_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/post_avatar"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/post_avatar_view"
+        tools:layout_editor_absoluteX="10dp" />
 
     <TextView
         android:id="@+id/post_article"
@@ -66,9 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line_break_top"
-        tools:text="Lorem ipsum..."
-
-        />
+        tools:text="@tools:sample/lorem" />
 
     <LinearLayout
         android:id="@+id/line_break_bottom"
@@ -85,8 +83,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:src="@drawable/ic_baseline_favorite_border_24"
         android:contentDescription="@string/post_likes_view"
+        android:src="@drawable/ic_baseline_favorite_border_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line_break_bottom" />
 
@@ -104,8 +102,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:src="@drawable/ic_baseline_share_24"
         android:contentDescription="@string/post_share_view"
+        android:src="@drawable/ic_baseline_share_24"
         app:layout_constraintStart_toEndOf="@id/post_likes_counter"
         app:layout_constraintTop_toBottomOf="@id/line_break_bottom"
 
