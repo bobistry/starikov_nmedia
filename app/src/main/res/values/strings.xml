@@ -6,10 +6,10 @@
     <string name="post_share_view" translatable="false">post_share_view</string>
     <string name="post_likes_view" translatable="false">post_likes_view</string>
     <string name="post_avatar_view" translatable="false">Нетология. Университет будущего</string>
-    <string name="author">Нетология. Университет интернет-профессий</string>
-    <string name="published">21 мая в 18:36</string>
-    <string name="article">Текст поста, который должен занимать некоторое пространство, визуально разделяя верхнюю и нижнюю части</string>
-    <string name="likes">10</string>
-    <string name="shared">5</string>
-    <string name="watched">5</string>
+    <string name="author" translatable="false">Нетология. Университет интернет-профессий</string>
+    <string name="published" translatable="false">21 мая в 18:36</string>
+    <string name="article" translatable="false">Текст поста, который должен занимать некоторое пространство, визуально разделяя верхнюю и нижнюю части</string>
+    <string name="likes" translatable="false">10</string>
+    <string name="shared" translatable="false">5</string>
+    <string name="watched" translatable="false">5</string>
 </resources>
