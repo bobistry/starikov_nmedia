@@ -45,17 +45,17 @@ class MainActivity : AppCompatActivity() {
 
                 likeCounter.text = post.likes.toString()
             }
+
+            share.setOnClickListener {
+                post.share++
+                shareCounter.text = PostProcessor.processQuantity(post.share)
+            }
+
+            watched.setOnClickListener {
+                post.watched++
+                shareCounter.text = PostProcessor.processQuantity(post.watched)
+            }
         }
 
     }
-
-//    private fun processQuantity(qty: Int): String {
-//        val result: String
-//        if (qty < 1000) {
-//            result = qty.toString()
-//        } else {
-//            result = Math.ceil(qty / 1000.0).toString() + " K"
-//        }
-//        return result
-//    }
 }
