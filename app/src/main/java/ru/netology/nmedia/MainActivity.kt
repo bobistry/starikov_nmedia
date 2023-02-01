@@ -2,29 +2,60 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_main.*
+import android.util.Log
 import ru.netology.nmedia.databinding.ActivityMainBinding
-
-//import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-//    val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-//        findViewById<ImageView>(R.id.post_likes_view).setOnClickListener {
-//            (it as ImageView).setImageResource(R.drawable.ic_baseline_favorite_active_24)
-//        }
 
-//        setContentView(R.layout.activity_main)
-//        post_likes_view.setOnClickListener {
-//            post_likes_view.setImageResource(R.drawable.ic_baseline_favorite_active_24)
-//        }
+        val post = Post(
+            id = 1,
+            author = "Нетология. Университет интернет-профессий",
+            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интесивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам от новичков до уверенных профессионалов. Но самое ваное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия - помочь встать на путь роста и начать цепочку перемен - http://netolo.gy/fyb",
+            published = "21 мая в 18:36",
+            likedByMe = false
+        )
 
-//        setContentView(binding.root)
+        setContentView(binding.root)
+
+        binding.apply {
+            author.text = post.author
+            published.text = post.published
+            article.text = post.content
+            if (post.likedByMe) {
+                like.setImageResource(R.drawable.ic_liked_24)
+            }
+            likeCounter.text = post.likes.toString()
+
+            like.setOnClickListener {
+                if (post.likedByMe) {
+                    post.likes--
+                } else {
+                    post.likes++
+                }
+                post.likedByMe = !post.likedByMe
+
+                like.setImageResource(
+                    if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
+                )
+
+                likeCounter.text = post.likes.toString()
+            }
+
+            share.setOnClickListener {
+                post.share++
+                shareCounter.text = PostProcessor.processQuantity(post.share)
+            }
+
+            watched.setOnClickListener {
+                post.watched++
+                shareCounter.text = PostProcessor.processQuantity(post.watched)
+            }
+        }
+
     }
 }
