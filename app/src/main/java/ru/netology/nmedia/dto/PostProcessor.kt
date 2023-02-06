@@ -1,4 +1,4 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.dto
 
 object PostProcessor {
     fun processQuantity(qty: Int): String {

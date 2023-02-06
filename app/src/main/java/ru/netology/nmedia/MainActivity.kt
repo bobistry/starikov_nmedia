@@ -2,8 +2,10 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.dto.PostProcessor
+import ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,50 +14,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val post = Post(
-            id = 1,
-            author = "Нетология. Университет интернет-профессий",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интесивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам от новичков до уверенных профессионалов. Но самое ваное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия - помочь встать на путь роста и начать цепочку перемен - http://netolo.gy/fyb",
-            published = "21 мая в 18:36",
-            likedByMe = false
-        )
-
         setContentView(binding.root)
 
-        binding.apply {
-            author.text = post.author
-            published.text = post.published
-            article.text = post.content
-            if (post.likedByMe) {
-                like.setImageResource(R.drawable.ic_liked_24)
-            }
-            likeCounter.text = post.likes.toString()
-
-            like.setOnClickListener {
-                if (post.likedByMe) {
-                    post.likes--
-                } else {
-                    post.likes++
-                }
-                post.likedByMe = !post.likedByMe
+        val viewModel by viewModels<PostViewModel>()
+        viewModel.data.observe(this) { post ->
+            binding.apply {
+                author.text = post.author
+                published.text = post.published
+                article.text = post.content
+                likeCounter.text = post.likes.toString()
 
                 like.setImageResource(
                     if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
                 )
-
-                likeCounter.text = post.likes.toString()
-            }
-
-            share.setOnClickListener {
-                post.share++
                 shareCounter.text = PostProcessor.processQuantity(post.share)
-            }
-
-            watched.setOnClickListener {
-                post.watched++
-                shareCounter.text = PostProcessor.processQuantity(post.watched)
+                watchedCounter.text = PostProcessor.processQuantity(post.watched)
             }
         }
 
+        binding.like.setOnClickListener {
+            viewModel.like()
+        }
+
+        binding.share.setOnClickListener {
+            viewModel.share()
+        }
+
+        binding.watched.setOnClickListener {
+            viewModel.watched()
+        }
     }
 }
